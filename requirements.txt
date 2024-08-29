@@ -1,0 +1,76 @@
+API de Gerenciamento de Medicamentos e Notificações
+Objetivo
+Desenvolver uma API que permita aos usuários gerenciar lembretes para tomar medicamentos e receber notificações em tempo real via e-mail, SMS e notificações push para garantir a adesão ao tratamento.
+
+Entidades e Campos
+1. Usuário
+userId: Identificador único do usuário (UUID ou ID numérico).
+username: Nome de usuário ou identificação.
+email: Endereço de e-mail do usuário.
+phoneNumber: Número de telefone do usuário (para SMS).
+passwordHash: Senha do usuário (armazenada como hash).
+apiKey: Chave de API associada ao usuário (para autenticação).
+createdAt: Data e hora de criação do usuário.
+updatedAt: Data e hora da última atualização do usuário.
+2. Medicamento
+medicationId: Identificador único do medicamento (UUID ou ID numérico).
+userId: Identificador do usuário que adicionou o medicamento (referência para a entidade Usuário).
+name: Nome do medicamento.
+dosage: Dosagem recomendada do medicamento.
+frequency: Frequência de administração (por exemplo, diariamente, duas vezes ao dia).
+createdAt: Data e hora de adição do medicamento.
+updatedAt: Data e hora da última atualização do medicamento.
+3. Lembrete
+reminderId: Identificador único do lembrete (UUID ou ID numérico).
+userId: Identificador do usuário que criou o lembrete (referência para a entidade Usuário).
+medicationId: Identificador do medicamento associado ao lembrete (referência para a entidade Medicamento).
+reminderTime: Data e hora programada para o lembrete.
+status: Status do lembrete (ativo, cancelado).
+createdAt: Data e hora de criação do lembrete.
+updatedAt: Data e hora da última atualização do lembrete.
+4. Notificação
+notificationId: Identificador único da notificação (UUID ou ID numérico).
+userId: Identificador do usuário que receberá a notificação (referência para a entidade Usuário).
+reminderId: Identificador do lembrete associado à notificação (referência para a entidade Lembrete).
+notificationType: Tipo de notificação (e-mail, SMS, push).
+message: Corpo da notificação.
+status: Status da notificação (enviada, falhada).
+sentAt: Data e hora em que a notificação foi enviada.
+failedAt: Data e hora em que o envio falhou (se aplicável).
+errorMessage: Mensagem de erro (se aplicável).
+createdAt: Data e hora de criação da notificação.
+updatedAt: Data e hora da última atualização da notificação.
+Funcionalidades
+Gerenciamento de Medicamentos
+
+Adicionar Medicamento: Permite aos usuários adicionar novos medicamentos, incluindo nome, dosagem e frequência.
+Atualizar Medicamento: Permite aos usuários atualizar informações sobre medicamentos existentes.
+Remover Medicamento: Permite aos usuários remover medicamentos da lista.
+Gerenciamento de Lembretes
+
+Criar Lembrete: Permite aos usuários criar lembretes para tomar medicamentos em horários específicos.
+Atualizar Lembrete: Permite aos usuários atualizar detalhes de lembretes existentes.
+Cancelar Lembrete: Permite aos usuários cancelar lembretes agendados.
+Notificações em Tempo Real
+
+Enviar Notificação: Permite enviar notificações em tempo real para lembrar os usuários de tomar seus medicamentos. Suporte a diferentes canais: e-mail, SMS e notificações push.
+Configurar Preferências de Notificação: Permite aos usuários configurar preferências de notificação, como escolher quais canais usar.
+Rastreamento e Status
+
+Consultar Status de Notificações: Permite aos usuários consultar o status das notificações enviadas e verificar se foram entregues com sucesso.
+Histórico de Notificações: Permite visualizar o histórico de notificações enviadas.
+Requisitos Funcionais e Não Funcionais
+Requisitos Funcionais
+Autenticação e Autorização: A API deve suportar autenticação via API Key ou OAuth 2.0 e garantir que apenas usuários autenticados possam gerenciar medicamentos, lembretes e notificações.
+Criação e Gerenciamento de Medicamentos: Permitir adição, atualização e remoção de medicamentos.
+Criação e Gerenciamento de Lembretes: Permitir criação, atualização e cancelamento de lembretes.
+Envio de Notificações: Suporte ao envio de notificações via e-mail, SMS e push, com a capacidade de configurar preferências de notificação.
+Rastreamento de Notificações: Fornecer informações sobre o status e histórico das notificações.
+Requisitos Não Funcionais
+Desempenho: A API deve ter baixa latência para o envio de notificações e resposta rápida para a criação e gerenciamento de lembretes e medicamentos.
+Escalabilidade: A API deve ser capaz de escalar para lidar com um grande número de usuários e notificações simultâneas.
+Segurança: Garantir criptografia dos dados em trânsito e em repouso, proteção contra ataques e segurança robusta para autenticação e autorização.
+Disponibilidade: Alta disponibilidade com estratégias de redundância e failover.
+Manutenibilidade: Código limpo, documentação clara e suporte a logs detalhados para manutenção e depuração.
+Compatibilidade: Compatibilidade com diferentes plataformas para notificações push e suporte a padrões para SMS e e-mails.
+Usabilidade: Documentação detalhada e exemplos de uso, com mensagens de erro informativas e úteis.
