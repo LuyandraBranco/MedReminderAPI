@@ -9,8 +9,11 @@
 
 import router from '@adonisjs/core/services/router'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+router.group(() => {
+  router.get('', () => {})
+  router.post('create-user', () => {})
+  router.put('edit-user', () => {})
+  router.delete('delete-user', () => {})
+}).prefix('user')
+
+
