@@ -2,5 +2,5 @@ export interface MedicationType {
   user_id: number
   name: string
   dosage: string
-  frequency: number
+  frequency: string
 }

@@ -3,10 +3,10 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 
 export default class Medication extends BaseModel {
   @column({ isPrimary: true })
-  declare medicationId: number
+  declare medication_id: number
 
   @column()
-  declare userId: number
+  declare user_id: number
 
   @column()
   declare name: string
@@ -15,7 +15,7 @@ export default class Medication extends BaseModel {
   declare dosage: string
 
   @column()
-  declare frequency: number
+  declare frequency: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
